@@ -8,11 +8,11 @@ import traceback
 import random
 import os
 import json
-
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
 from .prompts import example_params_prompt
 from .utils import call_small_model
+if os.getenv("MISTRAL_API_KEY"):
+    from mistralai.client import MistralClient
+    from mistralai.models.chat_completion import ChatMessage
 
 preamble = """
 import cadquery as cq

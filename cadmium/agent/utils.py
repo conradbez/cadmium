@@ -1,13 +1,14 @@
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage as MistralChatMessage
 import openai
 from dotenv import load_dotenv
 import os
 import subprocess
 import sys
-
 load_dotenv()
-mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
+if os.getenv("MISTRAL_API_KEY"):
+    from mistralai.client import MistralClient
+    from mistralai.models.chat_completion import ChatMessage as MistralChatMessage
+    
+    mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
 
 
 def call_small_model(prompt: str) -> str:

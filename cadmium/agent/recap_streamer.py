@@ -1,11 +1,11 @@
-from mistralai.client import MistralClient
 import os
 from threading import Thread
 from dotenv import load_dotenv
 from .utils import call_small_model
-
 load_dotenv()
-mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
+if os.getenv("MISTRAL_API_KEY"):
+    from mistralai.client import MistralClient
+    mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
 
 
 def get_new_summary(existing_summaries: list[str], current_streamed_chunk: str):

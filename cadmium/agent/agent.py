@@ -10,13 +10,16 @@ import rich
 import os
 import json
 import openai
-from mistralai.client import MistralClient
-from mistralai.models.chat_completion import ChatMessage
 from groq import Groq
 from abc import ABC
 from dotenv import load_dotenv
 from multiprocessing.pool import ThreadPool
 from copy import deepcopy
+
+if os.getenv("MISTRAL_API_KEY"):
+    from mistralai.client import MistralClient
+    from mistralai.models.chat_completion import ChatMessage
+
 
 load_dotenv()
 
